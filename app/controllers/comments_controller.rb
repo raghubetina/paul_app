@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def index
     @q = Comment.ransack(params[:q])
-    @comments = @q.result(:distinct => true).includes(:photo, :user).page(params[:page]).per(10)
+    @comments = @q.result(:distinct => true).includes(:photo).page(params[:page]).per(10)
 
     render("comments/index.html.erb")
   end
