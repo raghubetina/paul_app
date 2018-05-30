@@ -14,6 +14,18 @@
   </div>
 
 <div class="form-group">
+  <%= f.label :user_id, "User" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :user_id_gteq, :class => "form-control", :placeholder => "User greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :user_id_lteq, :class => "form-control", :placeholder => "User less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
           <%= f.label :created_at, "Created at" %>
           <div class="row">
             <div class='col-md-6 mb-1'>
@@ -58,11 +70,6 @@
       <%= f.text_field :photo_caption_cont, :class => "form-control", :placeholder => "Photo caption contains" %>
     </div>
 
-<div class="form-group">
-      <%= f.label :user_email_cont, "User email contains" %>
-      <%= f.text_field :user_email_cont, :class => "form-control", :placeholder => "User email contains" %>
-    </div>
-
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
       <a href="/comments" class="btn btn-default btn-block mb-1">Clear filters</a>
@@ -86,13 +93,7 @@
       <% @comments.each do |comment| %>
       <tr>
         <td><%= comment.body %></td>
-        <td>
-          <% if comment.user.present? %>
-            <a href="/users/<%= comment.user.id %>">
-              <%= comment.user.email %>
-            </a>
-          <% end %>
-        </td>
+        <td><%= comment.user_id %></td>
         <td>
           <% if comment.photo.present? %>
             <a href="/photos/<%= comment.photo.id %>">

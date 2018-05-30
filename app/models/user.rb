@@ -11,9 +11,6 @@ class User < ApplicationRecord
              :foreign_key => "sender_id",
              :dependent => :destroy
 
-  has_many   :comments,
-             :dependent => :destroy
-
   has_many   :photos,
              :dependent => :destroy
 
